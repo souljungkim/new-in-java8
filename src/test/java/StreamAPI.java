@@ -2,6 +2,7 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamAPI {
@@ -299,5 +300,31 @@ public class StreamAPI {
     }
 
 
+    /**************************************************
+     *
+     * IntStream
+     *
+     **************************************************/
+    @Test
+    public void intStream(){
+        //- IntStream.of(...)
+        IntStream streamFromIntStream = IntStream.of(1,2,3,4,5,6,7,8,9);
+        assert streamFromIntStream.toArray().length == 9;
+
+        //- Arrays.stream(ARRAY, startInclusive, endExclusive)
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        IntStream streamFromArrays = Arrays.stream(array, 0, 9);
+        assert streamFromArrays.toArray().length == 9;
+
+        //- IntStream.range(START-inclusive, END-exclusive)
+        assert IntStream.range(0, 5).sum() == 0+1+2+3+4;
+        assert IntStream.range(4, 7).sum() == 4+5+6;
+        assert IntStream.range(11, 15).sum() == 11+12+13+14;
+
+        //- IntStream.range(START-inclusive, END-inclusive)
+        assert IntStream.rangeClosed(0, 5).sum() == 0+1+2+3+4+5;
+        assert IntStream.rangeClosed(4, 7).sum() == 4+5+6+7;
+        assert IntStream.rangeClosed(11, 15).sum() == 11+12+13+14+15;
+    }
 
 }
