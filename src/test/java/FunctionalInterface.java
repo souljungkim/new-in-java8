@@ -1,19 +1,10 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.IntPredicate;
 
 
-/***************************************************************************
- * Java provide default interface in java.util.function
- * ~Predicate: Return true or false
- * ~Function: 1 args / Return some value
- * ~Supplier: No args / Return some value
- * ~Consumer: 1 args / No return
- * ~Operator: Like Function but args and return value are same.
- ***************************************************************************/
 public class FunctionalInterface {
 
     /**************************************************
@@ -76,6 +67,14 @@ public class FunctionalInterface {
     }
 
 
+    /***************************************************************************
+     * Java provide default interface in java.util.function
+     *      ~Predicate: Return true or false
+     *      ~Function: 1 args / Return some value
+     *      ~Supplier: No args / Return some value
+     *      ~Consumer: 1 args / No return
+     *      ~Operator: Like Function but args and return value are same.
+     ***************************************************************************/
     @Test
     public void implementsDefaultAPI(){
         List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);

@@ -1,13 +1,35 @@
-import annotation.Role;
-import annotation.Roles;
 import org.junit.Test;
 
-import java.lang.annotation.Annotation;
+import java.lang.annotation.*;
 import java.util.Arrays;
 
 public class RepeatableTest {
 
 
+    /**************************************************
+     * READY
+     **************************************************/
+    @Repeatable(Roles.class)
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Role {
+        String value();
+    }
+
+    @Target(ElementType.TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Roles {
+        Role[] value();
+    }
+
+    @Role("ADMIN") @Role("DBA") @Role("DA") @Role("MODEL")
+    public class Kim {
+    }
+
+
+
+    /**************************************************
+     * TEST
+     **************************************************/
     @Test
     public void checkRepeatableAnnotation(){
         Roles rolesAnn;
