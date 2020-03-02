@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -43,7 +44,32 @@ public class StreamAPI {
      * Test
      **************************************************/
     @Test
-    public void main(){
+    public void makingStream(){
+        //Arrays.stream()
+        String[] wordArray = {"Using", "Stream", "API", "From", "Java8"};
+        assert Arrays.stream(wordArray, 0, wordArray.length).count() == 5;
+
+        //Stream.of()
+        Stream<String> stream = Stream.of("hello nice to meet you!@#!".split("[\\P{L}]+"));
+        assert stream.map( s -> s.length() ).distinct().count() == 4;
+        Stream<String> stream2 = Stream.of("Using", "Stream", "API", "From", "Java8");
+        assert stream2.filter( s -> s.length() < 5 ).count() == 2;
+
+        //Stream.empty()
+        assert Stream.empty().count() == 0;
+
+        //Stream.generate()
+        assert Stream.generate(() -> "Stream").limit(5).count() == 5;
+        assert Stream.generate(() -> "Stream").limit(5).collect(Collectors.joining()).equals("StreamStreamStreamStreamStream");
+
+        //Stream.generate()
+        assert Stream.generate(Math::random).limit(5).count() == 5;
+        assert Stream.generate(Math::random).limit(5).map(String::valueOf).collect(Collectors.joining()).length() > 10;
+
+        //Stream.iterate()
+        assert Stream.iterate(BigInteger.ZERO, n -> n.add(BigInteger.ONE)).limit(5).map(String::valueOf).collect(Collectors.joining()).equals("01234");
+        assert Stream.iterate(BigInteger.ZERO, n -> n.add(BigInteger.ZERO)).limit(5).map(String::valueOf).collect(Collectors.joining()).equals("00000");
+        assert Stream.iterate(BigInteger.ONE, n -> n.add(BigInteger.TEN)).limit(5).map(String::valueOf).collect(Collectors.joining()).equals("111213141");
     }
 
     @Test
