@@ -1,6 +1,8 @@
 [All test](./src/test/java)
 
------
+-------------------------
+
+[Lambda Expression](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/LambdaExpression.java)
 
 [StreamAPI](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/StreamAPI.java)
 
@@ -8,8 +10,8 @@
 
 [Functional Interface](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/FunctionalInterface.java)
 
-[Interface Improvements](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/StreamAPI.java)
+[Interface Improvements](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/InterfaceImprovements.java)
 
 [@Repeatable](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/RepeatableTest.java)
 
-[Nashorn](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/RepeatableTest.java)
+[Nashorn](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/Nashorn.java)
