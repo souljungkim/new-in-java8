@@ -15,3 +15,5 @@
 [@Repeatable](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/RepeatableTest.java)
 
 [Nashorn](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/Nashorn.java)
+
+[Removal of PermGen](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/RemovalOfPermGen.java)

@@ -1,8 +1,14 @@
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.IntPredicate;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class FunctionalInterface {
@@ -50,21 +56,22 @@ public class FunctionalInterface {
 
     @Test
     public void checkThis(){
-        //- With Annonymous Class
-        SomeSimpleFunction funcWithAnnonymousClass = new SomeSimpleFunction() {
-            String testString = "Annonymous Class";
+        //- With Anonymous Class
+        SomeSimpleFunction funcWithAnonymousClass = new SomeSimpleFunction() {
+            String testString = "Anonymous Class";
             @Override
             public String process(){
                 return this.testString;
             }
         };
-        assert !funcWithAnnonymousClass.process().equals(this.testString);
-        assert funcWithAnnonymousClass.process().equals("Annonymous Class");
+        assert !funcWithAnonymousClass.process().equals(this.testString);
+        assert funcWithAnonymousClass.process().equals("Anonymous Class");
 
         //- With Lambda
         SomeSimpleFunction funcWithLambda = () -> this.testString;
         assert funcWithLambda.process().equals(this.testString);
     }
+
 
 
     /***************************************************************************
@@ -76,7 +83,7 @@ public class FunctionalInterface {
      *      ~Operator: Like Function but args and return value are same.
      ***************************************************************************/
     @Test
-    public void implementsDefaultAPI(){
+    public void predicate(){
         List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         IntPredicate evenChecker = (n) -> n % 2 == 0;
 
@@ -90,8 +97,39 @@ public class FunctionalInterface {
         }
         assert result;
 
-        //Or like this..
+        //Anonymous
+        assert numberList.stream().anyMatch(new Predicate<Integer>(){
+            @Override
+            public boolean test(Integer n) {
+                return n % 2 == 0;
+            }
+        });
+
+        //Lambda
         assert numberList.stream().anyMatch( (n) -> n % 2 == 0 );
+    }
+
+    @Test
+    public void consumer(){
+        //creating sample Collection
+        List<Integer> numberList = Stream.iterate(1, n -> n + 1 ).limit(10).collect(Collectors.toList());
+
+        //traversing using Iterator
+        Iterator<Integer> it = numberList.iterator();
+        while(it.hasNext()){
+            Integer i = it.next();
+            System.out.println("Iterator::"+i);
+        }
+
+        //traversing through forEach method of Iterable with anonymous class
+        numberList.forEach(new Consumer<Integer>() {
+            public void accept(Integer n) {
+                System.out.println("Anonymous::"+n);
+            }
+        });
+
+        //traversing using Lambda
+        numberList.forEach( n -> { System.out.println("Lambda::"+n); });
     }
 
 }
