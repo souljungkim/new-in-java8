@@ -27,5 +27,5 @@
 
 -------------------------
 ### Reference 
-https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html
-https://www.javatpoint.com/java-8-features
+- https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html
+- https://www.javatpoint.com/java-8-features
