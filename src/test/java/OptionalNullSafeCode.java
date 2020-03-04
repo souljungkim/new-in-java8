@@ -113,6 +113,12 @@ public class OptionalNullSafeCode {
         Optional.ofNullable(null).ifPresent((v) -> { assert !((String)v).isEmpty(); });
     }
 
+
+
+    /**************************************************
+     * Test
+     *  - Etc...
+     **************************************************/
     @Test
     public void nonNullValue(){
         String str = "value";
