@@ -4,7 +4,7 @@
 
 
 -------------------------
-### Test
+### My Test
 
 [Lambda Expression](https://github.com/souljungkim/new-in-java8/blob/master/src/test/java/LambdaExpression.java)
 
